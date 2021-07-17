@@ -3,7 +3,9 @@
   <head>
     <title>Naganocake</title>
     <%= csrf_meta_tags %>
-    
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -18,23 +20,38 @@
         
         <div>
           <ul>
+<<<<<<< HEAD
             <% if customer_signed_in? %>
+=======
+>>>>>>> fa1aa883f2674883e67f883fb392c74de4f9b2f9
               <li>マイページ</li>
               <li>商品一覧</li>
               <li>カート</li>
               <li>ログアウト</li>
+<<<<<<< HEAD
             <% elsif admin_signed_in? %>
+=======
+            
+>>>>>>> fa1aa883f2674883e67f883fb392c74de4f9b2f9
               <li>商品一覧</li>
               <li>会員一覧</li>
               <li>注文履歴一覧</li>
               <li>ジャンル一覧</li>
               <li>ログアウト</li>
+<<<<<<< HEAD
             <% else %>
+=======
+            
+>>>>>>> fa1aa883f2674883e67f883fb392c74de4f9b2f9
               <li>about</li>
               <li>商品一覧</li>
               <li>新規登録</li>
               <li>ログイン</li>
+<<<<<<< HEAD
             <% end %>
+=======
+            
+>>>>>>> fa1aa883f2674883e67f883fb392c74de4f9b2f9
           </ul>
         </div>
       </nav>
