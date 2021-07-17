@@ -1,0 +1,18 @@
+<!DOCTYPEhtml>
+<html>
+  <head>
+  </head>
+  
+  <body>
+    <h1>商品新規登録</h1>
+    <%= form_with model:@item, local:true do |f| %>
+      <div>商品画像</div>
+      <div>商品名</div>
+      <div>商品説明</div>
+      <div>ジャンル</div>
+      <div>税抜価格</div>
+      <div>販売ステータス</div>
+      <%= f.submit '新規登録' %>
+    <% end %>
+  </body>
+</html>
