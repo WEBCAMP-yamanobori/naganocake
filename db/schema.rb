@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(version: 20210717092011) do
     t.integer  "non_taxed_price"
     t.text     "introduction"
     t.string   "image_id"
-    t.boolean  "is_active"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.boolean  "is_active",       default: true
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
 end
