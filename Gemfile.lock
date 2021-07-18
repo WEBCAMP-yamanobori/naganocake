@@ -245,11 +245,7 @@ DEPENDENCIES
   jquery-rails
   listen (>= 3.0.5, < 3.2)
   puma (~> 3.11)
-<<<<<<< HEAD
-  rails (~> 5.2.6)
-=======
   rails (~> 5.2.5)
->>>>>>> origin/develop
   refile!
   refile-mini_magick
   sass-rails (~> 5.0)
