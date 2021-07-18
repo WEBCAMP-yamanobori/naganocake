@@ -21,31 +21,52 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
             <% if customer_signed_in? %>
-            <li class="btn btn-default border">
-              <%= link_to 'マイページ', "/", class: 'btn btn-default nav-link text-dark' %>
-            </li>
-            <li class="btn btn-default border">
-              <%= link_to '投稿フォーム', "/", class: 'btn btn-default nav-link text-dark' %>
-            </li>
-            <li class="btn btn-default border">
-              <%= link_to 'カート', "/", class: 'btn btn-default nav-link text-dark' %>
-            </li>
-            <li class="btn btn-default border">
-              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'btn btn-default nav-link text-dark' %>
-            </li>
+              <li class="btn btn-default border">
+                <%= link_to "マイページ", "/", class: 'btn btn-default nav-link text-dark' %>
+              </li>
+              <li class="btn btn-default border">
+                <%= link_to "投稿フォーム", "/", class: 'btn btn-default nav-link text-dark' %>
+              </li>
+              <li class="btn btn-default border">
+                <%= link_to "カート", "/", class: 'btn btn-default nav-link text-dark' %>
+              </li>
+              <li class="btn btn-default border">
+                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'btn btn-default nav-link text-dark' %>
+              </li>
+
+              <% elsif admin_signed_in? %>
+              <li class="btn btn-default border">
+                <%= link_to "商品一覧（未）", admin_root_path, class: 'btn btn-default nav-link text-dark' %>
+              </li>
+              <li class="btn btn-default border">
+                <%= link_to "会員一覧（未）", admin_root_path, class: 'btn btn-default nav-link text-dark' %>
+              </li>
+              <li class="btn btn-default border">
+                <%= link_to "注文履歴一覧（未）", admin_root_path, class: 'btn btn-default nav-link text-dark' %>
+              </li>
+              <li class="btn btn-default border">
+                <%= link_to "ジャンル一覧（未）", admin_root_path, class: 'btn btn-default nav-link text-dark' %>
+              </li>
+              <li class="btn btn-default border">
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-default nav-link text-dark' %>
+              </li>
+
             <% else %>
-            <li class="btn btn-default border">
-              <%= link_to "About", home_about_path, class: 'btn btn-default nav-link text-dark' %>
-            </li>
-            <li class="btn btn-default border">
-              <%= link_to '商品一覧ページ', "/", class: 'btn btn-default nav-link text-dark' %>
-            </li>
-            <li class="btn btn-default border">
-              <%= link_to "新規登録", new_customer_registration_path, class: 'btn btn-default nav-link text-dark' %>
-            </li>
-            <li class="btn btn-default border">
-              <%= link_to "ログイン", new_customer_session_path, class: 'btn btn-default nav-link text-dark' %>
-            </li>
+              <li class="btn btn-default border">
+                <%= link_to "About", home_about_path, class: 'btn btn-default nav-link text-dark' %>
+              </li>
+              <li class="btn btn-default border">
+                <%= link_to "商品一覧ページ", "/", class: 'btn btn-default nav-link text-dark' %>
+              </li>
+              <li class="btn btn-default border">
+                <%= link_to "新規登録", new_customer_registration_path, class: 'btn btn-default nav-link text-dark' %>
+              </li>
+              <li class="btn btn-default border">
+                <%= link_to "ログイン", new_customer_session_path, class: 'btn btn-default nav-link text-dark' %>
+              </li>
+              <li class="btn btn-default border">
+                <%= link_to "管理者側ログイン（要削除）", new_admin_session_path, class: 'btn btn-default nav-link text-dark' %>
+              </li>
             <% end %>
             </ul>
           </div>
@@ -69,5 +90,4 @@
       </div>
     </footer>
   </body>
-</html>
 </html>
