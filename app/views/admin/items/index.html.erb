@@ -13,11 +13,12 @@
     <tbody>
       <% @items.each do |item| %>
         <tr>
-          <td></td>
+          <td><%= item.id %></td>
           <td><%= item.name %></td>
           <td><%= item.non_taxed_price %></td>
           <td></td>
           <td></td>
         </tr>
+      <% end %>
     </tbody>
 </table>

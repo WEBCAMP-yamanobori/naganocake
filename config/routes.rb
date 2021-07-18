@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root :to => "homes#top"
-    resources :items, only: [:index, :new, :create, :show, :edit, :update]
+    resources :items, only: [:new, :create, :index, :show, :edit, :update]
   end
 
 end
