@@ -1,22 +1,11 @@
-<!DOCTYPE html>
-<html>
-  <head>
-  </head>
-  
-  <body>
-    <h1>商品新規登録</h1>
-    <%= form_with model: @item, local:true do |f| %>
-      <div>商品画像</div>
-      <%= f.attachment_field :image %>
-      <div>商品名</div>
-      <%= f.text_field :name %>
-      <div>商品説明</div>
-      <%= f.text_area :introduction %>
-      <div>ジャンル</div>
-      <div>税抜価格</div>
-      <%= f.text_field :non_taxed_price %>円
-      <div>販売ステータス</div>
-      <%= f.submit '新規登録' %>
-    <% end %>
-  </body>
-</html>
+<h1>商品新規登録</h1>
+
+<%= form_with model: @list, local:true do |f| %>
+  <div>商品画像 <%= f.attachment_field :image %></div>
+  <div>商品名 <%= f.text_field :name %></div>
+  <div>商品説明 <%= f.text_area :introduction %></div>
+  <dev>ジャンル </dev>
+  <div>税抜価格 <%= f.text_field :non_taxed_price %>円</div>
+  <div>販売ステータス </div>
+   <%= f.submit '新規登録' %>
+<% end %>
