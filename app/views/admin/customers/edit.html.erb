@@ -1,0 +1,15 @@
+<h2><%= @customer.last_name%><%= @customer.first_name %>の会員情報編集</h2>
+<table>
+  <tbody>
+    <%= form_with model:@customer, url: admin_customer_path, local:true do |f| %>
+    <tr>
+      <td>会員ID</td>
+      <td><%= @customer.id%></td>
+    </tr>
+    <tr>
+      <td>氏名</td>
+      <td><%= f.text_field :last_name, placeholder:"苗字" %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
