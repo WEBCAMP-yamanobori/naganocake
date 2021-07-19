@@ -1,4 +1,4 @@
-<h2><%= @customer.last_name%><%= @customer.first_name %>の会員詳細（要修正）</h2>
+<h2><%= @customer.last_name%><%= @customer.first_name %>の会員詳細</h2>
 
 <table class="table">
   <tbody>
@@ -31,8 +31,12 @@
       <td><%= @customer.email %></td>
     </tr>
     <tr>
-      <td>会員ステータス（要修正）</td>
-      <td><%= @customer.is_delete %></td>
+      <td>会員ステータス</td>
+      <% if @customer.is_delete == false %>
+          <td>有効</td>
+      <% else %>
+          <td>退会</td>
+      <% end %>
     </tr>
   </tbody>
 </table>
