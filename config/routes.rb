@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   get "home/about" => "public/homes#about"
 
   scope module: :public do
-    resource :customers, only: [:show, :edit, :update]
-    get "customers/unsubscribe" => "public/customers#unsubscribe"
-    get "customers/withdraw" => "public/customers#withdraw"
+    get "customers/my_page" =>"customers#show"
+    resource :customers, only: [:edit, :update]
+    get "customers/unsubscribe" => "customers#unsubscribe"
+    get "customers/withdraw" => "customers#withdraw"
   end
 
   devise_for :customers
