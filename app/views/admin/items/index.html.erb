@@ -24,7 +24,7 @@
               <%= item.name %>
             <% end %>
           </td>
-          <td><%= item.non_taxed_price %></td>
+          <td><%= item.non_taxed_price.to_s(:delimited) %></td>
           <td><%= item.genre.name %></td>
           <td>
             <% if item.is_active == true %>
