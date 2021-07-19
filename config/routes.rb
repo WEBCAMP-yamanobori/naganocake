@@ -6,7 +6,11 @@ Rails.application.routes.draw do
 
   scope module: :public do
     get "customers/my_page" =>"customers#show"
-    resource :customers, only: [:edit, :update]
+    resource :customers, only: [:edit, :update] do
+      resources :orders, only: [:new, :create, :index, :show]
+      post "/orders/confirm" => "orders#confirm"
+      get "/orders/complete" => "orders#complete"
+    end
     get "customers/unsubscribe" => "customers#unsubscribe"
     get "customers/withdraw" => "customers#withdraw"
   end
