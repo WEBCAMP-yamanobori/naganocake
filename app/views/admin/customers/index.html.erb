@@ -1,4 +1,23 @@
 <p>indexページです</p>
-<% @customers.each do |customer|%>
-<p>メールアドレス:<%= customer.last_name %></p>
-<% end %>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>会員ID</th>
+            <th>氏名</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        <% @customers.each do |customer|%>
+        <tr>
+            <td><%= customer.id %></td>
+            <td><%= customer.last_name %><%= customer.first_name %></td>
+            <td><%= customer.email %></td>
+            <td><%= customer.is_delete %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
