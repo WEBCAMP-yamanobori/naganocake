@@ -9,7 +9,10 @@ class Public::CustomersController < ApplicationController
     #@customer = Customer.find(params[:id])
   end
 
-  def updated
+  def update
+    @customer = current_customer
+    @customer.update(customer_params)
+    redirect_to customers_my_page_path
   end
 
   def unsubscribe
@@ -20,6 +23,6 @@ class Public::CustomersController < ApplicationController
 
   private
     def customer_params
-      params.repquire(:customer).permit(:lastname, :first_name, :last_name_kana, :first_name_kana, :postcode, :address, :phone_number, :is_delete)
+      params.require(:customer).permit(:lastname, :first_name, :last_name_kana, :first_name_kana, :postcode, :address, :phone_number, :is_delete)
     end
 end

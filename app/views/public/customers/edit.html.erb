@@ -1,5 +1,5 @@
 <h2>会員情報編集</h2>
-<%= form_with model: @customer, local:true do |f| %>
+<%= form_with model: @customer, url:customers_path, local:true do |f| %>
 <!--本来は、@customerのはず-->
   <div class = "form-icon">
     <table>
@@ -9,7 +9,7 @@
           <td><%= f.text_field :first_name %></td>
         </tr>
         <tr>
-          <td>カナ</td>
+          <td>フリガナ</td>
           <td><%= f.text_field :last_name_kana %></td>
           <td><%= f.text_field :first_name_kana %></td>
         </tr>
