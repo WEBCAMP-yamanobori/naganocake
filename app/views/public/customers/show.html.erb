@@ -4,12 +4,12 @@
     </div>
     <div class = "row">
       <h3>登録情報</h1>
-      <%= link_to "編集する", "/customers/my_page", class: "btn btn-success" %>
+      <%= link_to "編集する", edit_customers_path, class: "btn btn-success" %>
       <!--現在はこのページへのリンクに設定-->
     </div>
     <div class = "row">
-      <div class = "col-xs-8">
-        <table class = "table table-borderd">
+      <div class = "col-xs-8 ">
+        <table class = "table table-bordered">
           <tr>
             <td>氏名</td>
             <td><%= @customer.last_name %><%= @customer.first_name %></td>
