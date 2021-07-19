@@ -7,8 +7,8 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
-    resources :genres, only: [:index, :edit, :create, :update]
     root :to => "homes#top"
+    resources :genres, only: [:index, :edit, :create, :update] 
     resources :items, only: [:new, :create, :index, :show, :edit, :update]
   end
 
