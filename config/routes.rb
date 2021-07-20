@@ -9,13 +9,14 @@ Rails.application.routes.draw do
     resource :customers, only: [:edit, :update]
     get "customers/unsubscribe" => "customers#unsubscribe"
     get "customers/withdraw" => "customers#withdraw"
+    resources :addresses
   end
 
   devise_for :customers
 
   namespace :admin do
     root :to => "homes#top"
-    resources :genres, only: [:index, :edit, :create, :update] 
+    resources :genres, only: [:index, :edit, :create, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :items, only: [:new, :create, :index, :show, :edit, :update]
   end
