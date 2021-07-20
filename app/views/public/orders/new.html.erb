@@ -1,1 +1,14 @@
 <h2>注文情報入力</h2>
+<p><%= @customer.address %></p>
+
+<%= form_with model:@order, url: customers_orders_path, local:true do |f| %>
+    <div>
+        <string>支払方法</string><br/>
+        <%= f.radio_button :status, :"0" %>
+        <%= f.label :status, "クレジットカード", {value: :"0", style: "display: inline-block;"} %>
+        <%= f.radio_button :status, :"1" %>
+        <%= f.label :status, "銀行振込", {value: :"1", style: "display: inline-block;"} %>
+    </div>
+
+
+<% end %>
