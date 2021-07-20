@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get "customers/unsubscribe" => "customers#unsubscribe"
     get "customers/withdraw" => "customers#withdraw"
     resources :items, only: [:index, :show]
+    resources :addresses
   end
 
   devise_for :customers
