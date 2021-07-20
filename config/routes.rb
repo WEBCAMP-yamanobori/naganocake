@@ -6,16 +6,25 @@ Rails.application.routes.draw do
 
   scope module: :public do
     get "customers/my_page" =>"customers#show"
-    resource :customers, only: [:edit, :update]
-    get "customers/unsubscribe" => "customers#unsubscribe"
-    get "customers/withdraw" => "customers#withdraw"
+    resource :customers, only: [:edit, :update] do
+      collection do #id付与はしない
+      get 'unsubscribe' #退会画面
+      patch 'withdraw' #is_deletedを更新する
+      end
+    end
+    # get "customers/unsubscribe" => "customers#unsubscribe"
+    # get "customers/withdraw" => "customers#withdraw"
   end
 
-  devise_for :customers
+  #顧客側でいじるため、デフォルトから変更
+  devise_for :customers, :controllers => {
+    :sessions => 'public/sessions'
+  }
+
 
   namespace :admin do
     root :to => "homes#top"
-    resources :genres, only: [:index, :edit, :create, :update] 
+    resources :genres, only: [:index, :edit, :create, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :items, only: [:new, :create, :index, :show, :edit, :update]
   end
