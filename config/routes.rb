@@ -17,10 +17,11 @@ Rails.application.routes.draw do
   end
 
   #顧客側でいじるため、デフォルトから変更
-  devise_for :customers, :controllers => {
-    :sessions => 'public/sessions'
-  }
+  # devise_for :customers, :controllers => {
+  #   :sessions => 'public/sessions'
+  # }
 
+  devise_for :customers
 
   namespace :admin do
     root :to => "homes#top"
