@@ -5,4 +5,10 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many:cart_items, dependent: :destroy
+         
+  # falseならtrueを返すようにしている
+  def active_for_authentication?
+    super && (self.is_delete == false)
+  end
+  
 end
