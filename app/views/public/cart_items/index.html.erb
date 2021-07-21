@@ -1,5 +1,7 @@
 <strong>ショッピングカート</strong>
-<p>カートを空にする</p>
+<div class="button_cart_item">
+  <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, class:'btn btn-danger' %>
+</div>
 
 <div class="form-group">
   <div class="col-sm-8">
@@ -16,35 +18,52 @@
       <tbody>
         <% @cart_items.each do |item| %>
         <tr>
-          <td class="cell1"><%= attachment_image_tag item, :image, :fill, 100, 100, fallback: "22047646_s.jpg", size: "50x40" %><%= item.name %></td>
-          <td class="cell2"><%= item.add_tax_non_taxed_price.to_s(:delimited) %></td>
-          <td class="cell3"></td>
-          <td class="cell4"></td>
-          <td class="cell5">削除する</td>
+          <td class="cell1"><%= attachment_image_tag item.item, :image, :fill, 80, 50, fallback: "22047646_s.jpg", size: "80x50" %><%= item.item.name %></td>
+          <td class="cell2"><%= item.item.add_tax_non_taxed_price.to_s(:delimited) %></td>
+          <td class="cell3">
+            <%= form_with model: item, url: cart_item_path(item.id,value:1), local: true do |f| %>
+			        <%= f.select :quantity, (1..10).map { |i| [i, i]} %>
+			        <%= f.submit "変更", class: "btn btn-success" %>
+			      <% end %>
+          </td>
+          <td class="cell4"><%= item.sum_of_price.to_s(:delimited) %></td>
+          <td class="cell5">
+            <div class="button_cart_item">
+              <%= link_to '削除する', cart_item_path(item), method: :delete, class:'btn btn-danger' %>
+            </div>
+          </td>
         </tr>
         <% end %>
       </tbody>
     </table>
   </div>
 </div>
-    
+
 <div class="form-group">
   <div class="col-sm-2">
     <table class="table table-bordered">
       <tbody>
         <tr>
           <td class="cell6">合計金額</td>
-          <td class="cell7"></td>
+          <td class="cell7"><%= @total_price.to_s(:delimited) %></td>
         </tr>
       </tbody>
     </table>
   </div>
 </div>
-    
+
 <div>
   <%= link_to items_path do %>
-    買い物を続ける
+    <p class="btn btn-primary">買い物を続ける</p>
   <% end %>
 </div>
-    
-<div>情報入力に進む</div>
+
+<div>
+  <% if @cart_items.blank? %>
+		<% else %>
+		<div class="btn btn-success text-center">
+		  <!--リンク先変更必須-->
+			<%= link_to '情報入力に進む', cart_items_path, class:"btn btn-success" %>
+		</div>
+	<% end %>
+</div>
