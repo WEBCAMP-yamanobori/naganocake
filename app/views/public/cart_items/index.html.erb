@@ -1,6 +1,6 @@
 <strong>ショッピングカート</strong>
 <div class="button_cart_item">
-  <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, class:'btn btn-danger' %>
+  <%= link_to "カートを空にする", destroy_all_path(@cart_items), method: :delete, class:'btn btn-danger', "data-confirm" => "カート内商品を全て削除します。よろしいですか？" %>
 </div>
 
 <div class="form-group">
@@ -22,7 +22,7 @@
           <td class="cell2"><%= item.item.add_tax_non_taxed_price.to_s(:delimited) %></td>
           <td class="cell3">
             <%= form_with model: item, url: cart_item_path(item.id,value:1), local: true do |f| %>
-			        <%= f.select :quantity, (1..10).map { |i| [i, i]} %>
+			        <%= f.select :quantity, (1..20).map { |i| [i, i]} %>
 			        <%= f.submit "変更", class: "btn btn-success" %>
 			      <% end %>
           </td>
