@@ -1,0 +1,50 @@
+<strong>ショッピングカート</strong>
+<p>カートを空にする</p>
+
+<div class="form-group">
+  <div class="col-sm-8">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th class="cell1">商品名</th>
+          <th class="cell2">単価（税込）</th>
+          <th class="cell3">数量</th>
+          <th class="cell4">小計</th>
+          <th class="cell5"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cart_items.each do |item| %>
+        <tr>
+          <td class="cell1"><%= attachment_image_tag item, :image, :fill, 100, 100, fallback: "22047646_s.jpg", size: "50x40" %><%= item.name %></td>
+          <td class="cell2"><%= item.add_tax_non_taxed_price.to_s(:delimited) %></td>
+          <td class="cell3"></td>
+          <td class="cell4"></td>
+          <td class="cell5">削除する</td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+    
+<div class="form-group">
+  <div class="col-sm-2">
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <td class="cell6">合計金額</td>
+          <td class="cell7"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+    
+<div>
+  <%= link_to items_path do %>
+    買い物を続ける
+  <% end %>
+</div>
+    
+<div>情報入力に進む</div>
