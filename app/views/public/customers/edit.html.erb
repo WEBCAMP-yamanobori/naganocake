@@ -1,6 +1,6 @@
 <h2>会員情報編集</h2>
+<!--form_with部分-->
 <%= form_with model: @customer, url:customers_path, local:true do |f| %>
-<!--本来は、@customerのはず-->
   <div class = "form-icon">
     <table>
         <tr>
@@ -32,5 +32,5 @@
     </table>
   </div>
   <%= f.submit "編集内容を保存", class: 'btn btn-success' %>
-  退会する
+  <%= link_to "退会する", unsubscribe_customers_path,class:"btn btn-danger"%>
 <% end %>
