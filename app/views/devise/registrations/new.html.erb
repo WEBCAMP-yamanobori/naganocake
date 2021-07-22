@@ -6,48 +6,38 @@
   </div>
   <div class = "row">
     <form>
-      <table class="table">
+      <table class="table-bordeless">
         <tr>
           <div class="form-row">
-            <div class="col">
               <div class="field">
-                <td>名前</td>
-                <td><%= f.label :（姓） %></td>
+                <td>名前<%= f.label :（姓） %></td>
                 <td><%= f.text_field :last_name, autofocus: true %></td>
               </div>
-            </div>
-            <div class="col">
               <div class="field">
                 <td><%= f.label :（姓） %></td>
                 <td><%= f.text_field :first_name, autofocus: true %></td>
               </div>
-            </div>
           </div>
         </tr>
         <tr>
-          <div class="form-group col-md-6">
             <div class="form-row">
-              <div class="col">
                 <div class="field">
-                  <td>フリガナ</td>
-                  <td><%= f.label :（セイ）%></td>
+                  <td>フリガナ<%= f.label :（セイ）%></td>
                   <td><%= f.text_field :last_name_kana, autofocus: true %></td>
                 </div>
-              </div>
-              <div class="col">
                 <div class="field">
                   <td><%= f.label :（メイ） %></td>
                   <td><%= f.text_field :first_name_kana, autofocus: true %></td>
                 </div>
-              </div>
             </div>
-          </div>
         </tr>
         <tr>
-          <div class="form-group col-md-6">
-            <div class="field">
-              <td><%= f.label :メールアドレス %></td>
-              <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+          <div class="form-group">
+            <div class="col">
+                <div class="field">
+                  <td><%= f.label :メールアドレス %></td>
+                  <td><%= f.email_field :email, autofocus: true, autocomplete: "email", size: 50  %></td>
+                </div>
             </div>
           </div>
         </tr>
@@ -87,11 +77,17 @@
         </tr>
         <tr>
           <div class="actions">
+            <td></td>
             <td><%= f.submit "新規登録" ,class: 'btn btn-success' %></td>
           </div>
-          <td><%= render "devise/shared/links" %></td>
         </tr>
       </table>
+      <div class ="row">
+        <h4>既に会員済みの方</4>
+        <div class = login-form>
+          <p><%= render "devise/shared/links" %>からログインして下さい</p>
+        </div>
+      </div>
       </form>
     <% end %>
   </div>
