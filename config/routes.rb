@@ -9,19 +9,22 @@ Rails.application.routes.draw do
     get "customers/my_page" =>"customers#show"
     resource :customers, only: [:edit, :update] do
       collection do
-      get 'unsubscribe'
-      patch 'withdraw'
+        get 'unsubscribe'
+        patch 'withdraw'
+      end
     end
   end
 
     resources :items, only: [:index, :show]
     resources :addresses
-  end
+    resources :cart_items, only: [:index, :create, :update, :destroy]
+    delete 'cart_items' => 'cart_items#destroy_all', as: 'destroy_all'
+    
 
-   devise_for :customers , :controllers => {
+  devise_for :customers , :controllers => {
      :sessions => 'public/customers/sessions'
   }
-  
+
   #devise_for :customers
 
   namespace :admin do
