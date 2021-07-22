@@ -1,6 +1,6 @@
 <div class = "container">
   <div class = "row">
-    <h4>新規会員登録</h4>
+    <div class="p-3 mb-2 bg-light text-dark">新規会員登録</div>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
             <%= render "devise/shared/error_messages", resource: resource %>
   </div>
@@ -20,23 +20,23 @@
           </div>
         </tr>
         <tr>
-            <div class="form-row">
-                <div class="field">
-                  <td>フリガナ<%= f.label :（セイ）%></td>
-                  <td><%= f.text_field :last_name_kana, autofocus: true %></td>
-                </div>
-                <div class="field">
-                  <td><%= f.label :（メイ） %></td>
-                  <td><%= f.text_field :first_name_kana, autofocus: true %></td>
-                </div>
-            </div>
+          <div class="form-row">
+              <div class="field">
+                <td>フリガナ<%= f.label :（セイ）%></td>
+                <td><%= f.text_field :last_name_kana, autofocus: true %></td>
+              </div>
+              <div class="field">
+                <td><%= f.label :（メイ） %></td>
+                <td><%= f.text_field :first_name_kana, autofocus: true %></td>
+              </div>
+          </div>
         </tr>
         <tr>
           <div class="form-group">
             <div class="col">
                 <div class="field">
                   <td><%= f.label :メールアドレス %></td>
-                  <td><%= f.email_field :email, autofocus: true, autocomplete: "email", size: 50  %></td>
+                  <td><%= f.email_field :email, autofocus: true, autocomplete: "email"  %></td>
                 </div>
             </div>
           </div>
@@ -50,7 +50,7 @@
         <tr>
           <div class="field">
             <td><%= f.label :住所 %></td>
-            <td><%= f.text_field :address, autofocus: true %></td>
+            <td><%= f.text_field :address, autofocus: true, size: 50 %></td>
           </div>
         </tr>
         <tr>
@@ -61,9 +61,10 @@
         </tr>
         <tr>
           <div class="field">
-            <td><%= f.label :パスワード %></td>
-            <td><% if @minimum_password_length %>
-                  <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <td>
+              <%= f.label :パスワード %>
+              <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %> 文字以上)</em>
                 <% end %><br />
             </td>
             <td><%= f.password_field :password, autocomplete: "new-password" %></td>
@@ -78,17 +79,24 @@
         <tr>
           <div class="actions">
             <td></td>
-            <td><%= f.submit "新規登録" ,class: 'btn btn-success' %></td>
+            <td><%= f.submit "新規登録" ,class: 'btn btn-success col-md-6' %></td>
           </div>
         </tr>
       </table>
+    </div>
       <div class ="row">
-        <h4>既に会員済みの方</4>
-        <div class = login-form>
-          <p><%= render "devise/shared/links" %>からログインして下さい</p>
-        </div>
+        <div class="p-3 mb-2 bg-light text-dark">既に会員済みの方</div>
+      </div>
+      <div class ="row">
+        <table>
+          <tr>
+            <div class = login-form>
+              <td><%= render "devise/shared/links" %></td>
+              <td>からログインして下さい</td>
+            </div>
+          </tr>
+        </table>
       </div>
       </form>
     <% end %>
-  </div>
 </div>
