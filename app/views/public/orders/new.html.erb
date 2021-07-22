@@ -18,8 +18,10 @@
             <%= @customer.last_name %><%= @customer.first_name %><br/>
 
         <%= f.radio_button :address_option, :"1" %>登録済み住所から選択<br/>
-        <% @addresses.each do |address| %>
-        <% address.postcode %>
+        <% @customer.addresses.each do |address| %>
+        <%= address.postcode %>
+        <%= address.address %>
+        <%= address.name %>
         <% end %>
 
         <div class="form-group">
