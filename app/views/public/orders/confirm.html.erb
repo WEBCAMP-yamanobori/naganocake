@@ -1,0 +1,27 @@
+<h2>注文情報確認</h2>
+<%= form_with model:@order, url: customers_orders_path, local:true do |f| %>
+
+<p>商品名</p>
+
+<table>
+    <tbody>
+        <tr>
+            <td>支払方法</td>
+            <td><%= @order.payment_method %></td>
+        </tr>
+        <tr>
+            <td>お届け先</td>
+            <td>〒<%= @order.postcode %> <%= @order.address %><br/><%= @order.name %></td>
+        </tr>
+    </tbody>
+</table>
+<%= f.hidden_field :payment_method, :value => @order.payment_method %>
+<%= f.hidden_field :postcode, :value => @order.postcode %>
+<%= f.hidden_field :address, :value => @order.address %>
+<%= f.hidden_field :name, :value => @order.name %>
+<%= f.hidden_field :customer_id, :value => @order.customer_id %>
+<%= f.hidden_field :shipping_cost, :value => @order.shipping_cost %>
+<%= f.hidden_field :total_price, :value => @order.total_price %>
+<%= f.submit '注文を確定する' %>
+<% end %>
+
