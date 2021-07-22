@@ -1,0 +1,35 @@
+<div class = container>
+  <h2>注文履歴一覧</h2>
+  <table class = "table-borderd">
+    <tr>
+      <th>注文日</th>
+      <th>配送先</th>
+      <th>注文商品</th>
+      <th>ステータス</th>
+      <th>注文詳細</th>
+    </tr>
+<!--注文履歴一覧の情報を表示each.do (コメント）-->
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+        <td>
+          <%= order.customer.postcode %>< /br>
+          <%= order.customer.address %>< /br>
+          <%= order.customer.last_name %><%= order.customer.first_name %>
+        </td>
+<!--注文商品テーブル？から注文商品を表示　each.do（コメント）-->
+        <td>
+          <!--< @orders.order_items. each　do |order_item| %>-->
+          <!--  < = order_items.item_id %>-->
+          <!--< end %>-->
+        </td>
+        <td><%= order.total_price %></td>
+        <td><%= order.status %>?
+        <td><%= link_to "注文詳細", ~~~(リンク）%></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+
+
