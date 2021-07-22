@@ -3,22 +3,30 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root :to => "public/homes#top"
   get "home/about" => "public/homes#about"
-  
+
 
   scope module: :public do
     get "customers/my_page" =>"customers#show"
     resource :customers, only: [:edit, :update] do
-      resources :orders, only: [:new, :create, :index, :show, :destroy]
+      collection do
+        get 'unsubscribe'
+        patch 'withdraw'
+      end
+      
       post "/orders/confirm" => "orders#confirm"
       get "/orders/complete" => "orders#complete"
+      resources :orders, only: [:new, :create, :index, :show, :destroy]
     end
-    get "customers/unsubscribe" => "customers#unsubscribe"
-    get "customers/withdraw" => "customers#withdraw"
+    
     resources :items, only: [:index, :show]
     resources :addresses
   end
 
-  devise_for :customers
+   devise_for :customers , :controllers => {
+     :sessions => 'public/customers/sessions'
+  }
+
+  #devise_for :customers
 
   namespace :admin do
     root :to => "homes#top"
