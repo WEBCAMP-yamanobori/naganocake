@@ -11,4 +11,5 @@ class Customer < ApplicationRecord
     super && (self.is_delete == false)
   end
   
+  has_many :orders, dependent: :destroy
 end

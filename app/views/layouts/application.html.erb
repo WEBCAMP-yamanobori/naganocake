@@ -22,6 +22,9 @@
             <ul class="navbar-nav ml-auto">
             <% if customer_signed_in? %>
               <li class="btn btn-default border">
+                <%= link_to "注文情報入力画面へ進む（要削除）", new_customers_order_path, class: 'btn btn-default nav-link text-dark' %>
+              </li>
+              <li class="btn btn-default border">
                 <%= link_to "マイページ", customers_my_page_path, class: 'btn btn-default nav-link text-dark' %>
               </li>
               <li class="btn btn-default border">
