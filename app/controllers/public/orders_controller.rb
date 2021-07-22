@@ -1,9 +1,9 @@
 class Public::OrdersController < ApplicationController
 
   def new
-
     @customer = current_customer
     @order = Order.new
+    @addresses = Address.all
   end
 
   def create

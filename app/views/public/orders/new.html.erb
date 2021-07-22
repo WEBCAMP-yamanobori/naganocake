@@ -18,41 +18,45 @@
             <%= @customer.last_name %><%= @customer.first_name %><br/>
         
         <%= f.radio_button :address_option, :"1" %>登録済み住所から選択<br/>
+        <% @addresses.each do |address| %>
+        <% address.postcode %>
+        <% end %>
+        
+        <div class="form-group">
         <%= f.radio_button :address_option, :"2" %>新しいお届け先<br/>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-sm-2">
-                      <label>郵便番号(ハイフンなし)</label>
-                    </div>
-                    <div class="col-sm-2">
-                      <%= f.text_field :postcode , class:"form-control address_postcode", placeholder: "0000000" %>
-                    </div>
-                  </div>
-                </div>
-            
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-sm-2">
-                      <label>住所</label>
-                    </div>
-                    <div class="col-sm-4">
-                      <%= f.text_field :address , class:"form-control address_address", placeholder: "東京都渋谷区代々木神園町0-0" %>
-                    </div>
-                  </div>
-                </div>
-            
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-sm-2">
-                      <label>宛名</label>
-                    </div>
-                    <div class="col-sm-2">
-                      <%= f.text_field :name , class:"form-control address_name", placeholder: "令和道子" %>
-                    </div>
-                    <div class="col-sm-1"></div>
-                  </div>
-                </div>
-                </div>
+          <div class="row">
+            <div class="col-sm-2">
+              <label>郵便番号(ハイフンなし)</label>
+            </div>
+            <div class="col-sm-2">
+              <%= f.text_field :postcode , class:"form-control address_postcode", placeholder: "0000000" %>
+            </div>
+          </div>
+        </div>
+    
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-2">
+              <label>住所</label>
+            </div>
+            <div class="col-sm-4">
+              <%= f.text_field :address , class:"form-control address_address", placeholder: "東京都渋谷区代々木神園町0-0" %>
+            </div>
+          </div>
+        </div>
+    
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-2">
+              <label>宛名</label>
+            </div>
+            <div class="col-sm-2">
+              <%= f.text_field :name , class:"form-control address_name", placeholder: "令和道子" %>
+            </div>
+            <div class="col-sm-1"></div>
+          </div>
+        </div>
+        </div>
 
     <%= f.submit '確認画面へ進む' %>
 
