@@ -7,18 +7,23 @@ Rails.application.routes.draw do
 
   scope module: :public do
     get "customers/my_page" =>"customers#show"
-    resource :customers, only: [:edit, :update]
-    get "customers/unsubscribe" => "customers#unsubscribe"
-    get "customers/withdraw" => "customers#withdraw"
+    resource :customers, only: [:edit, :update] do
+      collection do
+        get 'unsubscribe'
+        patch 'withdraw'
+      end
+    end
     resources :items, only: [:index, :show]
     resources :addresses
     resources :cart_items, only: [:index, :create, :update, :destroy]
     delete 'cart_items' => 'cart_items#destroy_all', as: 'destroy_all'
-    # delete "cart_items/destroy_all" => "cart_items#destroy_all"
+    
 
   end
 
-  devise_for :customers
+  devise_for :customers , :controllers => {
+     :sessions => 'public/customers/sessions'
+  }
 
   namespace :admin do
     root :to => "homes#top"
