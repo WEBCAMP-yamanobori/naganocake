@@ -8,9 +8,16 @@
   <p>￥<%= @item.add_tax_non_taxed_price.to_s(:delimited) %>(税込)</p>
 </div>
 
-<div>個数のプルダウン実装</div>
-
-<div>カートに入れる</div>
+<div>
+  <%= form_with model: @cart_item, local:true do |f| %>
+    <% if customer_signed_in? %>
+      <%= f.hidden_field :customer_id, :value => current_customer.id %>
+    <% end %>
+    <%= f.hidden_field :item_id, :value => @item.id %>
+    <%= f.select :quantity, (1..20).map { |i| [i, i]}, include_blank: "個数選択" %>
+    <%= f.submit "カートに入れる", class: "btn btn-success" %>
+  <% end %>
+</div>
 
 <table class="table table-bordered" style="width: 12rem;">
   <thead>
