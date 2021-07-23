@@ -7,7 +7,11 @@
     <tbody>
         <tr>
             <td>支払方法</td>
-            <td><%= @order.payment_method %></td>
+            <% if @order.payment_method == "0" %>
+            <td>クレジットカード</td>
+            <% else %>
+            <td>銀行振込</td>
+            <% end %>
         </tr>
         <tr>
             <td>お届け先</td>
