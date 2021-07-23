@@ -17,7 +17,7 @@
           </div>
         </div>
       </div>
-  
+
       <div class="form-group">
         <div class="row">
           <div class="col-sm-2">
@@ -28,7 +28,7 @@
           </div>
         </div>
       </div>
-  
+
       <div class="form-group">
         <div class="row">
           <div class="col-sm-2">
@@ -50,19 +50,19 @@
           <table class="table table-bordered">
             <thead>
               <tr>
-                <th class="cell1">郵便番号</th>
-                <th class="cell2">住所</th>
-                <th class="cell3">宛名</th>
-                <th class="cell4"></th>
+                <th class="cell_address1">郵便番号</th>
+                <th class="cell_address2">住所</th>
+                <th class="cell_address3">宛名</th>
+                <th class="cell_address4"></th>
               </tr>
             </thead>
             <tbody>
               <% @addresses.each do |address| %>
               <tr>
-                <td class="cell1"><%= address.postcode %></td>
-                <td class="cell2"><%= address.address %></td>
-                <td class="cell3"><%= address.name %></td>
-                <td class="cell4">
+                <td class="cell_address1"><%= address.postcode %></td>
+                <td class="cell_address2"><%= address.address %></td>
+                <td class="cell_address3"><%= address.name %></td>
+                <td class="cell_address4">
                   <div class="bottom_address">
                     <%= link_to "編集する", edit_address_path(address.id), class:'btn btn-success bottom_1' %>
                     <%= link_to "削除する", address_path(address), method: :delete, class:'btn btn-danger', "data-confirm" => "これを削除するのかい？本当にいいのかい？(＾ω＾)"%>
