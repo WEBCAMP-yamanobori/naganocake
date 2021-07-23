@@ -18,11 +18,7 @@
             <%= @customer.last_name %><%= @customer.first_name %><br/>
 
         <%= f.radio_button :address_option, :"1" %>登録済み住所から選択<br/>
-        <% @customer.addresses.each do |address| %>
-        <%= address.postcode %>
-        <%= address.address %>
-        <%= address.name %>
-        <% end %>
+        <dev><%= f.collection_select :address_id, @customer.addresses, :id, :address_info, include_blank: "選択して下さい" %></dev>
 
         <div class="form-group">
         <%= f.radio_button :address_option, :"2" %>新しいお届け先<br/>
