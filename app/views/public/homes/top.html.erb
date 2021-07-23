@@ -1,32 +1,42 @@
 <%= flash[:notice] %>
-<div class = "container">
+<div class = "container mt-5">
+
+
   <div class = "row">
-    <div class = "mx-auto">
+    <div class = "col-sm-2">
+      <%= render 'admin/genres/index', genres: @genres %>
+    </div>
+
+    <div class = "col-sm-9 offset-sm-1 w-">
       <p>ようこそ、ながのcakeへ！</p>
       <p>このサイトは、ケーキ販売のECサイトになります。</p>
       <p>会員でない方も商品の閲覧はできますが、</p>
       <p>購入には会員登録が必要になります。</p>
     </div>
   </div>
-  <!--<div class = "row">-->
-  <!--  <div class = "mx-auto">-->
-      <h1><strong>新着商品</strong></h1>
-  <!--  </div>-->
-  <!--</div>-->
+
   <div class = "row">
-    
-        <% @item.each do |item| %>
-          <div class = "mx-auto">
-          <%= attachment_image_tag item, :image, :fill, 100, 100, fallback: "22047646_s.jpg", size: "100x100" %>
-            <%= link_to item_path(item.id) do %>
-              <p><%= item.name %></p>
-            <% end %>
-          <p>￥<%= item.add_tax_non_taxed_price.to_s(:delimited) %></p>
-          </div>
+    <div class= "col-sm-9 offset-sm-3">
+      <h1><strong>新着商品</strong></h1>
+    </div>
+    <div class = "col-sm-3"></div>
+
+    <% @item.each do |item| %>
+    <div class = "col-sm-2">
+      <%= attachment_image_tag item, :image, :fill, 100, 100, fallback: "22047646_s.jpg", size: "100x100" %>
+        <%= link_to item_path(item.id) do %>
+          <p><%= item.name %></p>
         <% end %>
+      <p>￥<%= item.add_tax_non_taxed_price.to_s(:delimited) %></p>
+    </div>
+    <% end %>
+
+  </div>
+  <div class = "row justify-content-end">
+      <%= link_to "すべての商品を見る >", items_path %>
   </div>
 
 
-      
-    
+
+
 </div>
