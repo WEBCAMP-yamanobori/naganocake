@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root :to => "public/homes#top"
   get "home/about" => "public/homes#about"
-
+  
 
   scope module: :public do
     get "customers/my_page" =>"customers#show"
@@ -18,16 +18,17 @@ Rails.application.routes.draw do
       resources :orders, only: [:new, :create, :index, :show, :destroy]
       resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     end
-    
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :create, :update, :destroy]
     delete 'cart_items' => 'cart_items#destroy_all', as: 'destroy_all'
-
+     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
 
   devise_for :customers , :controllers => {
      :sessions => 'public/customers/sessions'
   }
+
+  #devise_for :customers
 
   namespace :admin do
     root :to => "homes#top"
