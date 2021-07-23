@@ -25,11 +25,11 @@
     <div class="col-sm-4 offset-1">  
       <div>
         <strong><%= @item.name %></strong>
-        <p class="my-5"><%= @item.introduction %></p>
-        <strong>￥<%= @item.add_tax_non_taxed_price.to_s(:delimited) %>(税込)</strong>
+        <p class="my-3"><%= @item.introduction %></p>
+        <p class="mt-5">￥<%= @item.add_tax_non_taxed_price.to_s(:delimited) %>(税込)</strong>
       </div>
       
-      <div class="my-5">
+      <div>
         <%= form_with model: @cart_item, local:true do |f| %>
           <% if customer_signed_in? %>
             <%= f.hidden_field :customer_id, :value => current_customer.id %>

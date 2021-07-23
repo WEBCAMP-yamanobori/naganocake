@@ -16,13 +16,13 @@ Rails.application.routes.draw do
       post "/orders/confirm" => "orders#confirm"
       get "/orders/complete" => "orders#complete"
       resources :orders, only: [:new, :create, :index, :show, :destroy]
+      resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     end
     
     resources :items, only: [:index, :show]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     resources :cart_items, only: [:index, :create, :update, :destroy]
     delete 'cart_items' => 'cart_items#destroy_all', as: 'destroy_all'
-     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
 
   devise_for :customers , :controllers => {
