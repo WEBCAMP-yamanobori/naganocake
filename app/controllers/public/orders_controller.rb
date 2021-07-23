@@ -1,7 +1,6 @@
 class Public::OrdersController < ApplicationController
 
   def new
-
     @customer = current_customer
     @order = Order.new
   end
@@ -19,6 +18,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
+    # @order_item = `order.order_items
   end
 
   def destroy
