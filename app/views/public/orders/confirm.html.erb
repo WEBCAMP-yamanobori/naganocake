@@ -44,16 +44,11 @@
   </div>
 </div>
 
-
 <table>
     <tbody>
         <tr>
             <td>支払方法</td>
-            <% if @order.payment_method == "0" %>
-            <td>クレジットカード</td>
-            <% else %>
-            <td>銀行振込</td>
-            <% end %>
+            <td><%= @order.payment_method %></td>
         </tr>
         <tr>
             <td>お届け先</td>
