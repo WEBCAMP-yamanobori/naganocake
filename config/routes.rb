@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       post "/orders/confirm" => "orders#confirm"
       get "/orders/complete" => "orders#complete"
       resources :orders, only: [:new, :create, :index, :show, :destroy]
+      resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     end
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :create, :update, :destroy]
