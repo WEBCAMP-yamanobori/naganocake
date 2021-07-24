@@ -12,10 +12,10 @@
   </head>
   <body class="d-flex flex-column vh-100">
     <header class="border">
-      <nav class="navbar navbar-expand-lg">
-        <div class="container">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg">
           <%= link_to root_path do %>
-          <h1 class="title border navbar-brand pt-3 pb-3 pr-5 pl-5" href="/">LOGO</h1>
+          <h1 class="title border navbar-brand pt-3 pb-3 pr-5 pl-5 text-dark" href="/">LOGO</h1>
           <% end %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -23,60 +23,69 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
             <% if customer_signed_in? %>
-              <li class="btn btn-default border">
-                <%= link_to "注文情報入力画面へ進む（要削除）", new_customers_order_path, class: 'btn btn-default nav-link text-dark' %>
-              </li>
-              <li class="btn btn-default border">
+              <li class="btn btn-default border ml-4">
                 <%= link_to "マイページ", customers_my_page_path, class: 'btn btn-default nav-link text-dark' %>
               </li>
-              <li class="btn btn-default border">
+              <li class="btn btn-default border ml-4">
                 <%= link_to "商品一覧", items_path, class: 'btn btn-default nav-link text-dark' %>
               </li>
-              <li class="btn btn-default border">
+              <li class="btn btn-default border ml-4">
                 <%= link_to "カート", cart_items_path, class: 'btn btn-default nav-link text-dark' %>
               </li>
-              <li class="btn btn-default border">
+              <li class="btn btn-default border ml-4">
                 <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'btn btn-default nav-link text-dark' %>
               </li>
 
               <% elsif admin_signed_in? %>
-              <li class="btn btn-default border">
+              <li class="btn btn-default border ml-4">
                 <%= link_to "商品一覧", admin_items_path, class: 'btn btn-default nav-link text-dark' %>
               </li>
-              <li class="btn btn-default border">
+              <li class="btn btn-default border ml-4">
                 <%= link_to "会員一覧", admin_customers_path, class: 'btn btn-default nav-link text-dark' %>
               </li>
-              <li class="btn btn-default border">
+              <li class="btn btn-default border ml-4">
                 <%= link_to "注文履歴一覧（未）", admin_root_path, class: 'btn btn-default nav-link text-dark' %>
               </li>
-              <li class="btn btn-default border">
+              <li class="btn btn-default border ml-4">
                 <%= link_to "ジャンル一覧", admin_genres_path, class: 'btn btn-default nav-link text-dark' %>
               </li>
-              <li class="btn btn-default border">
+              <li class="btn btn-default border ml-4">
                 <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-default nav-link text-dark' %>
               </li>
 
             <% else %>
-              <li class="btn btn-default border">
+              <li class="btn btn-default border ml-4">
                 <%= link_to "About", home_about_path, class: 'btn btn-default nav-link text-dark' %>
               </li>
-              <li class="btn btn-default border">
+              <li class="btn btn-default border ml-4">
                 <%= link_to "商品一覧ページ", items_path, class: 'btn btn-default nav-link text-dark' %>
               </li>
-              <li class="btn btn-default border">
+              <li class="btn btn-default border ml-4">
                 <%= link_to "新規登録", new_customer_registration_path, class: 'btn btn-default nav-link text-dark' %>
               </li>
-              <li class="btn btn-default border">
+              <li class="btn btn-default border ml-4">
                 <%= link_to "ログイン", new_customer_session_path, class: 'btn btn-default nav-link text-dark' %>
               </li>
-              <li class="btn btn-default border">
+              <li class="btn btn-default border ml-4">
                 <%= link_to "管理者側ログイン（要削除）", new_admin_session_path, class: 'btn btn-default nav-link text-dark' %>
               </li>
             <% end %>
             </ul>
           </div>
+        </nav>
+          
+        <div class="row mb-3">
+          <div class="col-sm-9"></div>
+          <div class="col-sm-3">
+              <%= form_tag(items_path, :method => "get") do %>
+                <%= text_field_tag :search %> 
+                <%= button_tag :type => "submit", :name => nil,　class: "button is-info " do %> 
+                <i class="fas fa-search"></i>
+                <% end %>
+              <% end %> 
+          </div>
         </div>
-      </nav>
+      </div>
     </header>
     <main>
       <div class="mb-auto">
