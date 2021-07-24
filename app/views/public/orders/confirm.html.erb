@@ -3,7 +3,7 @@
 
 <div class = "container">
   <div class = "row">
-      <div class = "col-xs-6">
+      <div class = "col-sm-8">
           <h3>注文商品</h3>
           <table class="table table-bordered">
             <tr>
@@ -22,9 +22,8 @@
             </tr>
             <% end %>
       </div>
-    </div
-      <div class = "row">
-          <div class = "col-xs-4">
+      <div class = "col-sm-4">
+          <div class = "row">
               <table class="table table-bordered">
                   <tr>
                       <td>送料</td>
@@ -39,17 +38,16 @@
                       <td><%= @total_price + 800 %></td>
                   </tr>
               </table>
-          </div>
-      </div>
-  </div>
+            </div>
+        </div>
+    </div>
 </div>
-
 
 <table>
     <tbody>
         <tr>
             <td>支払方法</td>
-            <% if @order.payment_method == "0" %>
+            <% if @order.payment_method == 0 %>
             <td>クレジットカード</td>
             <% else %>
             <td>銀行振込</td>
