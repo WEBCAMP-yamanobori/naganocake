@@ -1,13 +1,46 @@
-<strong>商品一覧</strong>
-<div>(全<%= Item.count %>件)</div>
-<div>
-  <% @items.each do |item| %>
-    <%= attachment_image_tag item, :image, :fill, 100, 100, fallback: "22047646_s.jpg", size: "100x100" %>
-      <%= link_to item_path(item.id) do %>
-        <p><%= item.name %></p>
-      <% end %>
-    <p>￥<%= item.add_tax_non_taxed_price.to_s(:delimited) %></p>
-  <% end %>
+<div class="container">
+  <div class="row my-5">
+    <div class="col-sm-3">
+      <table class="table table-bordered" style="width: 12rem;">
+        <thead>
+          <tr>
+            <td>ジャンル検索</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @genres.each do |genre| %>
+          <tr>
+            <td><%= genre.name %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-sm-9">
+      <h3>商品一覧 (全<%= Item.count %>件)</h3>
+      <div class="d-flex flex-wrap">
+        <% @items.each do |item| %>
+        <div class="flex-item">
+          <div class="card　border-0">
+            <%= attachment_image_tag item, :image, :fill, 170, 100, fallback: "22047646_s.jpg", size: "170x100" %>
+            <p class="card-title">
+            <%= link_to item_path(item.id) do %>
+              <%= item.name %>
+            <% end %>
+            <p class="card-text">
+              ￥<%= item.add_tax_non_taxed_price.to_s(:delimited) %>
+            </p>
+            </p>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
+<<<<<<< HEAD
 
 <%= render 'admin/genres/index', genres: @genres %>
+=======
+>>>>>>> origin/develop
