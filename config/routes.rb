@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :create, :update, :destroy]
     delete 'cart_items' => 'cart_items#destroy_all', as: 'destroy_all'
-  end
+   end
 
   devise_for :customers , :controllers => {
      :sessions => 'public/customers/sessions'
