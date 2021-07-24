@@ -44,7 +44,6 @@
   </div>
 </div>
 
-
 <table>
     <tbody>
         <tr>
@@ -54,6 +53,7 @@
             <% else %>
             <td>銀行振込</td>
             <% end %>
+            <td><%= @order.payment_method %></td>
         </tr>
         <tr>
             <td>お届け先</td>
