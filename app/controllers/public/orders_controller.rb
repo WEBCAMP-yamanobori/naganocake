@@ -8,7 +8,7 @@ class Public::OrdersController < ApplicationController
   def create
     @customer = current_customer
     @order = Order.new(order_params)
-    @order.save
+    if@order.save
     @cart_items = current_customer.cart_items.all
      @cart_items.each do |cart_item|
         @order_items = @order.order_items.new
@@ -18,6 +18,9 @@ class Public::OrdersController < ApplicationController
         @order_items.save
      end
     redirect_to orders_complete_customers_path
+    else
+      render :new
+    end
 
   end
 

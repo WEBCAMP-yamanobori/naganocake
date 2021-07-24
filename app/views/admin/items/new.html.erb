@@ -1,3 +1,10 @@
+<% if @item.errors.any? %>
+  <%= @item.errors.count %>件のエラーが発生しました
+  <% @item.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
 <div class="container">
   <div class="row text-right my-4">
     <div class="col-sm-4">
@@ -24,7 +31,7 @@
           <tr class="introduction-height">
             <div class="col-sm-2">
               <td class="cell-width"><%= f.label :商品説明 %></td>
-              <td><%= f.text_area :ntroduction, class:"form-control", placeholder: "ここに説明文を記述します" %></td>
+              <td><%= f.text_area :introduction, class:"form-control", placeholder: "ここに説明文を記述します" %></td>
             </div>
           </tr>
           <tr class="cell-height">
