@@ -30,6 +30,7 @@ class Public::AddressesController < ApplicationController
   end
 
   private
+  
   def address_params
     params.require(:address).permit(:customer_id, :name, :postcode, :address)
   end
