@@ -25,7 +25,8 @@ Rails.application.routes.draw do
    end
 
   devise_for :customers , :controllers => {
-     :sessions => 'public/customers/sessions'
+     :sessions => 'public/customers/sessions',
+     :registrations => 'public/customers/registrations'
   }
 
   #devise_for :customers

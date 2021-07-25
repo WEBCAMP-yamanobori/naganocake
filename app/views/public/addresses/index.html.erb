@@ -1,3 +1,10 @@
+<% if @address.errors.any? %>
+  <%= @address.errors.count %>件のエラーが発生しました
+  <% @address.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-1"></div>
