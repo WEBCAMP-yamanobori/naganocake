@@ -21,15 +21,7 @@
     </div>
     <div class = "col-sm-3"></div>
 
-    <% @item.each do |item| %>
-    <div class = "col-sm-2">
-      <%= attachment_image_tag item, :image, :fill, 100, 100, fallback: "22047646_s.jpg", size: "100x100" %>
-        <%= link_to item_path(item.id) do %>
-          <p><%= item.name %></p>
-        <% end %>
-      <p>￥<%= item.add_tax_non_taxed_price.to_s(:delimited) %></p>
-    </div>
-    <% end %>
+    <%= render 'public/items/item', items: @item %>
 
   </div>
   <div class = "row justify-content-end">

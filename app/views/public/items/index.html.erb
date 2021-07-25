@@ -19,23 +19,9 @@
 
     <div class="col-sm-9">
       <h3>商品一覧 (全<%= Item.count %>件)</h3>
-      <div class="d-flex flex-wrap">
-        <% @items.each do |item| %>
-        <div class="flex-item">
-          <div class="card　border-0">
-            <%= attachment_image_tag item, :image, :fill, 170, 100, fallback: "22047646_s.jpg", size: "170x100" %>
-            <p class="card-title">
-            <%= link_to item_path(item.id) do %>
-              <%= item.name %>
-            <% end %>
-            <p class="card-text">
-              ￥<%= item.add_tax_non_taxed_price.to_s(:delimited) %>
-            </p>
-            </p>
-          </div>
-        </div>
-        <% end %>
-      </div>
+
+      <%= render 'public/items/item', items: @items %>
+
     </div>
   </div>
 </div>
