@@ -33,9 +33,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root :to => "homes#top"
+    resources :orders, only: [:update, :show]
     resources :genres, only: [:index, :edit, :create, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :items, only: [:new, :create, :index, :show, :edit, :update]
+    resources :order_items, only: [:update]
   end
 
   devise_for :admins
