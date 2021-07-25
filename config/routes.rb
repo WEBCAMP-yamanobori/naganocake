@@ -18,7 +18,7 @@ Rails.application.routes.draw do
       resources :orders, only: [:new, :create, :index, :show, :destroy]
       resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     end
-    
+
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :create, :update, :destroy]
     delete 'cart_items' => 'cart_items#destroy_all', as: 'destroy_all'
@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :edit, :create, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :items, only: [:new, :create, :index, :show, :edit, :update]
+    resources :order_items, only: [:update]
   end
 
   devise_for :admins

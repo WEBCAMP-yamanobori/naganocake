@@ -61,17 +61,17 @@
           <label>注文ステータス</label>
         </div>
         <div class="col-sm-3">
-          <%= f.select :status ,options_for_select([['入金待ち', 0], ['入金確認', 1], ['製作中', 2], ['発送準備中', 3], ['発送中', 4]]) %>
+          <%= f.select :status ,options_for_select([['入金待ち', 0], ['入金確認', 1], ['製作中', 2], ['発送準備中', 3], ['発送中', 4]], selected: @order.status) %>
           <%= f.submit "更新", class:'btn btn-success btn-sm bottom_order1' %>
         </div>
       </div>
     </div>
   <% end %>
 
-  <div class="form-group">
-    <div class="row">
-      <div class="col-sm-1"></div>
-      <div class="col-sm-8">
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-8">
           <table class="table table-bordered">
             <thead>
               <tr>
@@ -83,18 +83,43 @@
               </tr>
             </thead>
             <tbody>
-              <% @.each do |address| %>
+              <% @order.order_items.each do |order_item| %>
               <tr>
-                <td class="cell_order1"><%= address.postcode %></td>
-                <td class="cell_order2"><%= address.address %></td>
-                <td class="cell_order3"><%= address.name %></td>
-                <td class="cell_order4"></td>
-                <td class="cell_order5"></td>
+                <td class="cell_order1"><%= order_item.item.name %></td>
+                <td class="cell_order2"><%= order_item.item.add_tax_non_taxed_price %></td>
+                <td class="cell_order3"><%= order_item.quantity %></td>
+                <td class="cell_order4"><%= order_item.item.add_tax_non_taxed_price * order_item.quantity %></td>
+                <td class="cell_order5">
+                  <!--<= order_item.status %>-->
+                  <div class="bottom_order2">
+                    <%= form_with model: [:admin, order_item], local:true do |f| %>
+                      <%= f.select :status ,options_for_select([['着手不可', 0], ['製作待ち', 1], ['製作中', 2], ['製作完了', 3]], selected: order_item.status) %>
+                      <%= f.submit "更新", class:'btn btn-success btn-sm bottom_order1' %>
+                    <% end %>
+                  </div>
+                </td>
               </tr>
-              <% end %>
             </tbody>
           </table>
+        </div>
+
+        <div class = "col-sm-3" >
+          <table class="table table-borderless">
+            <tr>
+              <td>商品合計</td>
+              <td><%= @order.total_price.to_i - 800 %>円</td>
+            </tr>
+            <tr>
+              <td>配送料金</td>
+              <td><%= @order.shipping_cost %>円</td>
+            </tr>
+            <tr>
+              <td>請求金額合計</td>
+              <td><%= @order.total_price %>円</td>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
 </div>
