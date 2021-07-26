@@ -10,13 +10,13 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.save
     @cart_items = current_customer.cart_items.all
-     @cart_items.each do |cart_item|
+    @cart_items.each do |cart_item|
         @order_items = @order.order_items.new
         @order_items.item_id = cart_item.item.id
         @order_items.price = cart_item.item.non_taxed_price
         @order_items.quantity = cart_item.quantity
         @order_items.save
-     end
+    end
     redirect_to orders_complete_customers_path
 
   end
