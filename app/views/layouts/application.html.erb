@@ -73,16 +73,20 @@
             </ul>
           </div>
         </nav>
-          
+
         <div class="row mb-3">
-          <div class="col-sm-9"></div>
+          <div class="col-sm-9 text-center">
+            <% if customer_signed_in? %>
+              <p>ようこそ、<%= current_customer.last_name %>さん！</p>
+            <% end %>
+          </div>
           <div class="col-sm-3">
               <%= form_tag(items_path, :method => "get") do %>
-                <%= text_field_tag :search %> 
-                <%= button_tag :type => "submit", :name => nil,　class: "button is-info " do %> 
+                <%= text_field_tag :search %>
+                <%= button_tag :type => "submit", :name => nil,　class: "button is-info " do %>
                 <i class="fas fa-search"></i>
                 <% end %>
-              <% end %> 
+              <% end %>
           </div>
         </div>
       </div>
@@ -96,7 +100,7 @@
       <div class="container mt-5">
         <div class="row">
           <div class="mx-auto">
-            <p>フッティーツナマヨゲームズ(＾ω＾).inc</p>
+            <p>Copyright © 2021 フッティーツナマヨゲームズ(＾ω＾)inc.　 All Rights Reserved.</p>
           </div>
         </div>
       </div>
