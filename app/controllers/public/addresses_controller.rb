@@ -1,4 +1,5 @@
 class Public::AddressesController < ApplicationController
+  
   def index
     @customer = current_customer
     @address = Address.new
@@ -36,6 +37,7 @@ class Public::AddressesController < ApplicationController
   end
 
   private
+  
   def address_params
     params.require(:address).permit(:customer_id, :name, :postcode, :address)
   end

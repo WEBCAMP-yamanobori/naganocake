@@ -1,7 +1,10 @@
 class Admin::CustomersController < ApplicationController
+  
+  skip_before_action :authenticate_customer!, only: [:index, :show, :edit, :update]
+  before_action :if_not_admin
 
   def index
-    @customers = Customer.all
+    @customers = Customer.page(params[:page]).per(10)
   end
 
   def show
@@ -24,6 +27,10 @@ class Admin::CustomersController < ApplicationController
 
 
   private
+  
+  def if_not_admin
+    redirect_to root_path unless admin_signed_in?
+  end
 
   def customer_params
     params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :postcode, :address, :phone_number, :is_delete)
