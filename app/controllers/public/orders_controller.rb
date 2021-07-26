@@ -8,17 +8,20 @@ class Public::OrdersController < ApplicationController
   def create
     @customer = current_customer
     @order = Order.new(order_params)
-    @order.save
-    @cart_items = current_customer.cart_items.all
-    @cart_items.each do |cart_item|
+    if@order.save
+      @cart_items = current_customer.cart_items.all
+        @cart_items.each do |cart_item|
         @order_items = @order.order_items.new
         @order_items.item_id = cart_item.item.id
         @order_items.price = cart_item.item.non_taxed_price
         @order_items.quantity = cart_item.quantity
         @order_items.save
+        current_customer.cart_items.destroy_all
+      end
+      redirect_to orders_complete_customers_path
+    else
+      render :new
     end
-    redirect_to orders_complete_customers_path
-
   end
 
   def index

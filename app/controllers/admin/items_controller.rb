@@ -8,10 +8,13 @@ class Admin::ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(item_params)
-    @item.save
     @items = Item.all
-    redirect_to admin_items_path
+    @item = Item.new(item_params)
+    if@item.save
+      redirect_to admin_items_path
+    else
+      render :new
+    end
   end
 
   def index
@@ -28,8 +31,11 @@ class Admin::ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    @item.update(item_params)
-    redirect_to admin_items_path(@item.id)
+    if @item.update(item_params)
+      redirect_to admin_items_path(@item.id)
+    else
+      render :edit
+    end
   end
 
 
@@ -43,5 +49,5 @@ class Admin::ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:image, :name, :introduction, :genre_id, :non_taxed_price, :is_active)
   end
-  
+
 end

@@ -1,3 +1,10 @@
+<% if @order.errors.any? %>
+  <%= @order.errors.count %>件のエラーが発生しました
+  <% @order.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
 <div class="container">
   <div class="row text-right my-3">
     <strong class="col-sm-2">注文情報入力</strong>
