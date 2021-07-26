@@ -21,6 +21,7 @@
       <h3>商品一覧 (全<%= Item.count %>件)</h3>
 
       <%= render 'public/items/item', items: @items %>
+      <%= paginate @items %>
 
     </div>
   </div>
