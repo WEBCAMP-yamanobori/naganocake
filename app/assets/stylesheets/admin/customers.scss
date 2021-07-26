@@ -1,3 +1,8 @@
-// .table-bordeless {
-//     spacing
-// }
+.row {
+  padding : 10px 0;
+}
+
+table.table-borderless{
+  border-collapse:separate;
+	border-spacing: 100px 20px;
+}

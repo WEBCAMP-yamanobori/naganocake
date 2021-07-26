@@ -14,67 +14,51 @@
   
   <%= form_with model:@customer, url: admin_customer_path, local:true do |f| %>
     <div class="row">
-      <div class="col-sm-12">
-        <table class="table-borderless">
-            <tr>
-              <td>会員ID</td>
-              <td><%= @customer.id %></td>
-            </tr>
-            <tr>
-              <div>
-                <td>氏名</td>
-                <td><%= f.text_field :last_name, placeholder:"性" %></td>
-                <td><%= f.text_field :first_name, placeholder:"名" %></td>
-              </div>
-            </tr>
-            <tr>
-              <div>
-              <td>フリガナ</td>
-                <td><%= f.text_field :last_name_kana, placeholder:"セイ" %></td>
-                <td><%= f.text_field :first_name_kana, placeholder:"メイ" %></td>
-              </div>
-            </tr>
-            <tr>
-              <div>
-                <td>郵便番号</td>
-                <td><%= f.text_field :postcode, placeholder:"郵便番号" %></td>
-              </div>
-            </tr>
-            <tr>
-              <div>
-                <td>住所</td>
-                <td><%= f.text_field :address, placeholder:"住所" %></td>
-              </div>
-            </tr>
-            <tr>
-              <div>
-                <td>電話番号</td>
-                <td><%= f.text_field :phone_number, placeholder:"電話番号" %></td>
-              </div>
-            </tr>
-            <tr>
-              <div>
-                <td>メールアドレス</td>
-                <td><%= f.text_field :email, placeholder:"メールアドレス" %></td>
-              </div>
-            </tr>
-            <tr>
-              <div>
-                <td>会員ステータス</td>
-                <td>
-                  <%= f.radio_button :is_delete, :false %>
-                  <%= f.label :is_delete, "有効", {value: :false, style: "display: inline-block;"} %>
-                  <%= f.radio_button :is_delete, :true %>
-                  <%= f.label :is_delete, "退会", {value: :true, style: "display: inline-block;"} %>
-                </td>
-              </div>
-            </tr>
-        </table>
-      </div>
+      <table class="table-borderless">
+          <tr>
+            <td>会員ID</td>
+            <td><%= @customer.id %></td>
+          </tr>
+          <tr>
+            <td>氏名</td>
+            <td><%= f.text_field :last_name, placeholder:"性" %></td>
+            <td><%= f.text_field :first_name, placeholder:"名" %></td>
+          </tr>
+          <tr>
+            <td>フリガナ</td>
+            <td><%= f.text_field :last_name_kana, placeholder:"セイ" %></td>
+            <td><%= f.text_field :first_name_kana, placeholder:"メイ" %></td>
+          </tr>
+          <tr>
+            <td>郵便番号</td>
+            <td><%= f.text_field :postcode, placeholder:"郵便番号" %></td>
+          </tr>
+          <tr>
+            <td>住所</td>
+            <td><%= f.text_field :address, placeholder:"住所" %></td>
+          </tr>
+          <tr>
+            <td>電話番号</td>
+            <td><%= f.text_field :phone_number, placeholder:"電話番号" %></td>
+          </tr>
+          <tr>
+            <td>メールアドレス</td>
+            <td><%= f.text_field :email, placeholder:"メールアドレス" %></td>
+          </tr>
+          <tr>
+            <td>会員ステータス</td>
+            <td>
+              <%= f.radio_button :is_delete, :false %>
+              <%= f.label :is_delete, "有効", {value: :false, style: "display: inline-block;"} %>
+              <%= f.radio_button :is_delete, :true %>
+              <%= f.label :is_delete, "退会", {value: :true, style: "display: inline-block;"} %>
+            </td>
+          </tr>
+      </table>
     </div>
     
-    <div class="row text-right my-4">
-      <div class="col-sm-3">
+    <div class="row text-right mb-4">
+      <div class="col-sm-4">
         <div><%= f.submit '変更を保存', class:"btn btn-success" %></div>
       </div>
     </div>
