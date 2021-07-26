@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row text-right my-4">
+  <div class="row text-right mt-4">
     <div class="col-sm-2">
       <h4>会員一覧</h4>
     </div>
@@ -28,11 +28,13 @@
                     <% end %>
                 </td>
                 <td><%= customer.email %></td>
-                <% if customer.is_delete == false %>
-                    <td>有効</td>
-                <% else %>
-                    <td>退会</td>
-                <% end %>
+                <td>
+                  <% if customer.is_delete == false %>
+                    <p class="color text-success", style="margin:0">有効</p>
+                  <% else %>
+                    <p class="color text-secondary", style="margin:0">退会</p>
+                  <% end %>
+                </td>
             </tr>
             <% end %>
         </tbody>
