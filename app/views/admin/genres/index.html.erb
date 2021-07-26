@@ -1,3 +1,10 @@
+<% if @genre.errors.any? %>
+  <%= @genre.errors.count %>件のエラーが発生しました
+  <% @genre.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-1"></div>
