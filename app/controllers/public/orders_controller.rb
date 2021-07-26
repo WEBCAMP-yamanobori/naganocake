@@ -22,7 +22,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_customer.orders
+    @customer = current_customer
+    @orders = @customer.orders.page(params[:page]).per(10)
     # @total_price = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
   end
 

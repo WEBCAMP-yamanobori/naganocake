@@ -13,6 +13,7 @@ class Admin::ItemsController < ApplicationController
 
   def index
     @items = Item.all
+    @items = Item.page(params[:page]).per(10)
   end
 
   def show
@@ -35,5 +36,5 @@ class Admin::ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:image, :name, :introduction, :genre_id, :non_taxed_price, :is_active)
   end
-  
+
 end
