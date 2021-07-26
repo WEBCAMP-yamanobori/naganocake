@@ -40,6 +40,8 @@ Rails.application.routes.draw do
     resources :order_items, only: [:update]
   end
 
-  devise_for :admins
+  devise_for :admin , controllers: {
+    sessions: 'admins/sessions'
+  }
 
 end
