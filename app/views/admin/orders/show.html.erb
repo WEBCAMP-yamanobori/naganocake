@@ -68,58 +68,59 @@
     </div>
   <% end %>
 
-    <div class="form-group">
-      <div class="row">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-8">
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th class="cell_order1">商品名</th>
-                <th class="cell_order2">単価(税込)</th>
-                <th class="cell_order3">数量</th>
-                <th class="cell_order4">小計</th>
-                <th class="cell_order5">製作ステータス</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @order.order_items.each do |order_item| %>
-              <tr>
-                <td class="cell_order1"><%= order_item.item.name %></td>
-                <td class="cell_order2"><%= order_item.item.add_tax_non_taxed_price %></td>
-                <td class="cell_order3"><%= order_item.quantity %></td>
-                <td class="cell_order4"><%= order_item.item.add_tax_non_taxed_price * order_item.quantity %></td>
-                <td class="cell_order5">
-                  <!--<= order_item.status %>-->
-                  <div class="bottom_order2">
-                    <%= form_with model: [:admin, order_item], local:true do |f| %>
-                      <%= f.select :status ,options_for_select([['着手不可', 0], ['製作待ち', 1], ['製作中', 2], ['製作完了', 3]], selected: order_item.status) %>
-                      <%= f.submit "更新", class:'btn btn-success btn-sm bottom_order1' %>
-                    <% end %>
-                  </div>
-                </td>
-              </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
 
-        <div class = "col-sm-3" >
-          <table class="table table-borderless">
+  <div class="form-group">
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-8">
+        <table class="table table-bordered">
+          <thead>
             <tr>
-              <td>商品合計</td>
-              <td><%= @order.total_price.to_i - 800 %>円</td>
+              <th class="cell_order1">商品名</th>
+              <th class="cell_order2">単価(税込)</th>
+              <th class="cell_order3">数量</th>
+              <th class="cell_order4">小計</th>
+              <th class="cell_order5">製作ステータス</th>
             </tr>
+          </thead>
+          <tbody>
+          <% @order.order_items.each do |order_item| %>
             <tr>
-              <td>配送料金</td>
-              <td><%= @order.shipping_cost %>円</td>
+              <td class="cell_order1"><%= order_item.item.name %></td>
+              <td class="cell_order2"><%= order_item.item.add_tax_non_taxed_price %></td>
+              <td class="cell_order3"><%= order_item.quantity %></td>
+              <td class="cell_order4"><%= order_item.item.add_tax_non_taxed_price * order_item.quantity %></td>
+              <td class="cell_order5">
+                <!--<= order_item.status %>-->
+                <div class="bottom_order2">
+                  <%= form_with model: [:admin, order_item], local:true do |f| %>
+                    <%= f.select :status ,options_for_select([['着手不可', 0], ['製作待ち', 1], ['製作中', 2], ['製作完了', 3]], selected: order_item.status) %>
+                    <%= f.submit "更新", class:'btn btn-success btn-sm bottom_order1' %>
+                  <% end %>
+                </div>
+              </td>
             </tr>
-            <tr>
-              <td>請求金額合計</td>
-              <td><%= @order.total_price %>円</td>
-            </tr>
-          </table>
-        </div>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+
+      <div class = "col-sm-3" >
+        <table class="table table-borderless">
+          <tr>
+            <td>商品合計</td>
+            <td><%= @order.total_price.to_i - 800 %>円</td>
+          </tr>
+          <tr>
+            <td>配送料金</td>
+            <td><%= @order.shipping_cost %>円</td>
+          </tr>
+          <tr>
+            <td>請求金額合計</td>
+            <td><%= @order.total_price %>円</td>
+          </tr>
+        </table>
       </div>
     </div>
+  </div>
 </div>
