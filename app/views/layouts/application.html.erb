@@ -15,7 +15,7 @@
       <div class="container">
         <nav class="navbar navbar-expand-lg">
           <%= link_to root_path do %>
-          <h1 class="title border navbar-brand pt-3 pb-3 pr-5 pl-5 text-dark" href="/">LOGO</h1>
+            <h1 class="title border navbar-brand pt-3 pb-3 pr-5 pl-5 text-dark" href="/">LOGO</h1>
           <% end %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -73,16 +73,16 @@
             </ul>
           </div>
         </nav>
-          
+
         <div class="row mb-3">
           <div class="col-sm-9"></div>
           <div class="col-sm-3">
               <%= form_tag(items_path, :method => "get") do %>
-                <%= text_field_tag :search %> 
-                <%= button_tag :type => "submit", :name => nil,　class: "button is-info " do %> 
+                <%= text_field_tag :search %>
+                <%= button_tag :type => "submit", :name => nil,　class: "button is-info " do %>
                 <i class="fas fa-search"></i>
                 <% end %>
-              <% end %> 
+              <% end %>
           </div>
         </div>
       </div>
