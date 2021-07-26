@@ -1,11 +1,8 @@
 class Public::ItemsController < ApplicationController
-<<<<<<< HEAD
-
-=======
   
   skip_before_action :authenticate_customer!, only: [:index, :show]
   
->>>>>>> origin/develop
+  
   def index
     @items = Item.page(params[:page]).per(8)
     @genres = Genre.all

@@ -4,7 +4,6 @@ class Admin::CustomersController < ApplicationController
   before_action :if_not_admin
 
   def index
-    # @customers = Customer.all
     @customers = Customer.page(params[:page]).per(10)
   end
 
