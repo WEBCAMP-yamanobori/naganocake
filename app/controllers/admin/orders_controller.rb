@@ -1,4 +1,8 @@
 class Admin::OrdersController < ApplicationController
+
+  skip_before_action :authenticate_customer!, only: [:show, :update]
+  before_action :if_not_admin
+
   def show
     @order = Order.find(params[:id])
     # @order_item = OrderItem.find(params[:id])
@@ -16,12 +20,13 @@ class Admin::OrdersController < ApplicationController
   end
 
   private
-
+  
+  def if_not_admin
+    redirect_to root_path unless admin_signed_in?
+  end
+  
   def order_params
     params.require(:order).permit(:status)
   end
 
-  # def order_item_params
-  #   params.require(:order_item).permit(:status)
-  # end
 end
