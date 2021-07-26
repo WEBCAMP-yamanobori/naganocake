@@ -1,4 +1,8 @@
 class Admin::GenresController < ApplicationController
+  
+  skip_before_action :authenticate_customer!, only: [:index, :create, :edit, :update]
+  before_action :if_not_admin
+  
   def index
     @genres = Genre.all
     @genre = Genre.new
@@ -28,6 +32,11 @@ class Admin::GenresController < ApplicationController
   end
 
   private
+  
+  def if_not_admin
+    redirect_to root_path unless admin_signed_in?
+  end
+  
   def genre_params
     params.require(:genre).permit(:name)
   end
