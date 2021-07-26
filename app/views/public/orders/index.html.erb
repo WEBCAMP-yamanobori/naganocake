@@ -14,9 +14,9 @@
       <tr>
         <td><%= order.created_at.strftime("%Y-%m-%d %H:%M") %></td>
         <td>
-          <%= order.customer.postcode %><br>
-          <%= order.customer.address %><br>
-          <%= order.customer.last_name %><%= order.customer.first_name %>
+          <%= order.postcode %><br>
+          <%= order.address %><br>
+          <%= order.name %>
         </td>
 <!--注文商品テーブル？から注文商品を表示　each.do（コメント）-->
         <td>
