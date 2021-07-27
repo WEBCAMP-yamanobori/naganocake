@@ -106,18 +106,18 @@
       </div>
 
       <div class = "col-sm-3" >
-        <table>
+        <table class="table table-borderless">
           <tr>
-            <td class="table-contents">商品合計</td>
-            <td class="table-contents"><%= @order.total_price.to_i - 800 %>円</td>
+            <td>商品合計</td>
+            <td><%= @order.total_price.to_i - 800 %>円</td>
           </tr>
           <tr>
-            <td class="table-contents">配送料金</td>
-            <td class="table-contents"><%= @order.shipping_cost %>円</td>
+            <td>配送料金</td>
+            <td><%= @order.shipping_cost %>円</td>
           </tr>
           <tr>
-            <td class="table-contents">請求金額合計</td>
-            <td class="table-contents"><%= @order.total_price %>円</td>
+            <td>請求金額合計</td>
+            <td><%= @order.total_price %>円</td>
           </tr>
         </table>
       </div>
