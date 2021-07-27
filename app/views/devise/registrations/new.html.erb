@@ -1,12 +1,12 @@
 <div class = "container">
     <div class = "row">
       <div class="p-3 mb-2 bg-light text-dark">新規会員登録</div>
-    </div> 
+    </div>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
-    
+
           <div class = "row">
-              <table class="table-bordeless">
+              <table class="table-borderless-form">
                 <tr>
                   <div class="form-row">
                       <div class="field">
@@ -50,7 +50,7 @@
                 <tr>
                   <div class="field">
                     <td><%= f.label :住所 %></td>
-                    <td colspan = "3"><%= f.text_field :address, autofocus: true, size:50 %></td>
+                    <td colspan = "3"><%= f.text_field :address, autofocus: true, size:65 %></td>
                   </div>
                 </tr>
                 <tr>
@@ -84,11 +84,11 @@
                 </tr>
               </table>
             </div>
-            
+
             <div class ="row">
               <div class="p-3 mb-2 bg-light text-dark">既に会員済みの方</div>
             </div>
-            
+
             <div class ="row">
               <table>
                 <tr>
@@ -99,6 +99,6 @@
                 </tr>
               </table>
             </div>
-            
+
     <% end %>
 </div>

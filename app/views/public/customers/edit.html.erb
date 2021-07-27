@@ -12,7 +12,7 @@
 <!--form_with部分-->
 <%= form_with model: @customer, url:customers_path, local:true do |f| %>
     <div class = "row">
-      <table class="table-bordeless">
+      <table class="table-borderless-form">
             <tr>
               <td>氏名</td>
               <td><%= f.text_field :last_name %></td>
