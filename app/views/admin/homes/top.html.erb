@@ -26,11 +26,7 @@
                 <% end %>
               </td>
               <td class="cell_adtop2"><%= order.name %></td>
-              <% order_quantity = 0 %>
-              <% order.order_items.each do |order_item| %>
-                <% order_quantity += order_item.quantity %>
-              <% end %>
-              <td class="cell_adtop3"><%= order_quantity %></td>
+              <td class="cell_adtop3"></td>
               <% if order.status == 0 %>
                 <td class="cell_adtop4">入金待ち</td>
               <% elsif order.status == 1 %>
@@ -46,6 +42,7 @@
             <% end %>
           </tbody>
         </table>
+        <%= paginate @orders %>
     　</div>
   　</div>
   </div>
