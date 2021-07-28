@@ -1,0 +1,94 @@
+<div class = container >
+  <div class="p-3 mb-2 bg-light text-dark">注文履歴詳細</div>
+  <div class = "row">
+    <div class = "col-sm-6" >
+      <h3>注文情報</h3>
+      <table class="table table-bordered">
+        <tr>
+          <td>注文日</td>
+          <td><%= @order.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+        </tr>
+        <tr>
+          <td>配送先</td>
+          <td>
+            <%= @order.postcode %><br>
+            <%= @order.address %><br>
+            <%= @order.name %>
+          </td>
+        </tr>
+        <tr>
+          <td>支払方法</td>
+          <td>
+            <% if @order.payment_method == 0 %>
+              クレジットカード
+            <% else %>
+              銀行振込
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>ステータス</td>
+          <td>
+            <% if @order.status == 0 %>
+              入金待ち
+            <% elsif @order.status == 1 %>
+              入金確認
+            <% elsif @order.status == 2 %>
+              製作中
+            <% elsif @order.status == 3 %>
+              発送準備中
+            <% elsif @order.status == 4 %>
+              発送中
+            <% end %>
+          </td>
+        </tr>
+      </table>
+<!--ここから、注文内容の表示（コメント）-->
+      <h3>注文内容</h3>
+      <table class="table table-bordered">
+        <tr>
+          <th>商品</th>
+          <th>単価(税込)</th>
+          <th>個数</th>
+          <th>小計</th>
+        </tr>
+<!--注文商品テーブルから注文商品を表示　each.do（コメント）-->
+        <% @order.order_items. each do |order_item| %>
+        <tr>
+            <td>
+              <%= order_item.item.name %>
+            </td>
+            <td>
+              <%= order_item.item.add_tax_non_taxed_price %>
+            </td>
+            <td>
+              <%= order_item.quantity %>
+            </td>
+            <td>
+              <%= order_item.item.add_tax_non_taxed_price * order_item.quantity %>
+            </td>
+        </tr>
+        <% end %>
+      </table>
+  </div>
+    <div class = "col-sm-6" >
+      <div class = "row">
+        <h3>請求情報</h3>
+        <table class="table table-bordered">
+          <tr>
+            <td>商品合計</td>
+            <td><%= @order.total_price.to_i - 800 %></td>
+          </tr>
+          <tr>
+            <td>配送料金</td>
+            <td><%= @order.shipping_cost %>
+          </tr>
+          <tr>
+            <td>ご請求金額</td>
+            <td><%= @order.total_price %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

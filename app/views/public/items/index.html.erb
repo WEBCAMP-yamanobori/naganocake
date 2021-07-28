@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row my-5">
+    <div class="col-sm-3">
+      <table class="table table-bordered" style="width: 12rem;">
+        <thead>
+          <tr>
+            <td>ジャンル検索</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @genres.each do |genre| %>
+          <tr>
+            <td><%= genre.name %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-sm-9">
+      <h3>商品一覧(全<%= Item.count %>件)</h3>
+
+            
+  
+
+      <%= render 'public/items/item', items: @items %>
+      <%= paginate @items %>
+
+    </div>
+  </div>
+</div>
+

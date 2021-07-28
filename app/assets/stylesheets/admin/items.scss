@@ -1,0 +1,20 @@
+.table-bordeless {
+    table-layout: fixed;
+}
+
+.cell-height {
+    height: 50px;
+}
+
+.introduction-height {
+    height: 80px;
+}
+
+.cell-width {
+    width: 150px;
+}
+
+table.table-borderless-item {
+    border-collapse:separate;
+	border-spacing: 25px;
+}
