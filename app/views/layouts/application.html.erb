@@ -66,15 +66,12 @@
               <li class="btn btn-default border ml-4">
                 <%= link_to "ログイン", new_customer_session_path, class: 'btn btn-default nav-link text-dark' %>
               </li>
-              <li class="btn btn-default border ml-4">
-                <%= link_to "管理者側ログイン（要削除）", new_admin_session_path, class: 'btn btn-default nav-link text-dark' %>
-              </li>
             <% end %>
             </ul>
           </div>
         </nav>
 
-        <div class="row mb-3">
+        <div class="row mt-2">
           <div class="col-sm-9 text-center">
             <% if customer_signed_in? %>
               <p>ようこそ、<%= current_customer.last_name %>さん！</p>
